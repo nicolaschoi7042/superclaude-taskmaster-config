@@ -22,15 +22,7 @@
       "Bash(git commit:*)",
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)",
-      "Bash(gh auth:*)",
-      "Bash(wget:*)",
-      "Bash(tar:*)",
-      "Bash(sudo mv:*)",
-      "Bash(mkdir:*)",
-      "Bash(mv:*)",
-      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
-      "Bash(git-credential-manager:*)"
+      "Bash(git push:*)"
     ],
     "deny": []
   }
