@@ -6,7 +6,7 @@
 
 ## ✨ 주요 특징
 
-- 🎯 **One-Command Setup**: `./scripts/quick-setup.sh` 하나로 모든 설정 완료
+- 🎯 **One-Command Setup**: `./setup.sh` 하나로 모든 설정 완료
 - 🔄 **Portable**: Git clone 후 즉시 사용 가능
 - 🛡️ **Secure**: 환경 변수로 민감 정보 관리
 - 🌍 **Cross-Platform**: Windows, macOS, Linux 모두 지원
@@ -51,7 +51,7 @@ git clone [이 저장소 URL]
 cd mcp
 
 # 2. 자동 설정 실행
-./scripts/quick-setup.sh
+./setup.sh
 
 # 3. Jenkins 설정 (선택사항)
 nano .env  # Jenkins URL과 자격 증명 입력

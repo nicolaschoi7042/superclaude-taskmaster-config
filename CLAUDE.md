@@ -1,10 +1,10 @@
 # SuperClaude Entry Point
 
-@COMMANDS.md
-@FLAGS.md
-@PRINCIPLES.md
-@RULES.md
-@MCP.md
-@PERSONAS.md
-@ORCHESTRATOR.md
-@MODES.md
+@config/COMMANDS.md
+@config/FLAGS.md
+@config/PRINCIPLES.md
+@config/RULES.md
+@mcp/MCP.md
+@config/PERSONAS.md
+@config/ORCHESTRATOR.md
+@config/MODES.md

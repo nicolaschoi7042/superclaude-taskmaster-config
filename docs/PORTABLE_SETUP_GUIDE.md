@@ -28,7 +28,7 @@ cd mcp
 ### 2단계: 자동 설정 실행
 ```bash
 # 방법 1: 빠른 설정 스크립트 (권장)
-./scripts/quick-setup.sh
+./setup.sh
 
 # 방법 2: npm 스크립트
 npm install
@@ -52,7 +52,7 @@ mcp/
 ├── package.json              # 프로젝트 의존성 및 스크립트
 ├── scripts/
 │   ├── setup-mcp.js         # 자동 설정 스크립트
-│   └── quick-setup.sh       # 빠른 설정 배시 스크립트
+│   └── setup.sh       # 빠른 설정 배시 스크립트
 ├── .env.template            # 환경 변수 템플릿
 ├── .env                     # 실제 환경 변수 (git에 포함되지 않음)
 ├── .gitignore              # Git 무시 파일 목록
@@ -101,7 +101,7 @@ mcp/
 cd your-company-project
 git submodule add [이 저장소 URL] mcp-config
 cd mcp-config
-./scripts/quick-setup.sh
+./setup.sh
 ```
 
 ### 방법 2: 설정 파일 복사
@@ -110,13 +110,13 @@ cp -r /path/to/mcp/scripts your-project/
 cp /path/to/mcp/package.json your-project/
 cp /path/to/mcp/.env.template your-project/
 cd your-project
-./scripts/quick-setup.sh
+./setup.sh
 ```
 
 ### 방법 3: 전역 설정 (한 번만)
 ```bash
 cd /path/to/mcp
-./scripts/quick-setup.sh
+./setup.sh
 # 이후 모든 프로젝트에서 MCP 서버 사용 가능
 ```
 
@@ -151,7 +151,7 @@ npm run setup-mcp
 ### 🎯 회사 프로젝트 권장 워크플로우:
 1. **이 저장소를 회사 내부 Git에 복사**
 2. **팀 공통 환경 변수 설정을 `.env.template`에 추가**
-3. **각 개발자는 자신의 PC에서 `git clone` 후 `quick-setup.sh` 실행**
+3. **각 개발자는 자신의 PC에서 `git clone` 후 `setup.sh` 실행**
 4. **개인별 환경 변수는 `.env`에서 설정**
 
 ### 🔧 문제 해결:
@@ -170,6 +170,6 @@ npm run setup-mcp
 
 이제 **매번 MCP 설정을 다시 할 필요가 없습니다!**
 
-✅ **Git clone** → **./quick-setup.sh** → **Claude Desktop 재시작** → **완료!**
+✅ **Git clone** → **./setup.sh** → **Claude Desktop 재시작** → **완료!**
 
 팀원들과 이 설정을 공유하여 모두가 동일한 MCP 환경에서 작업할 수 있습니다.
