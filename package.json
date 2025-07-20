@@ -1,0 +1,25 @@
+{
+  "name": "mcp-workspace",
+  "version": "1.0.0",
+  "description": "MCP Servers workspace with Jenkins integration",
+  "scripts": {
+    "setup-mcp": "node scripts/setup-mcp.js",
+    "install-jenkins": "npm install @grec0/mcp-jenkins",
+    "configure-claude": "node scripts/configure-claude.js",
+    "test-jenkins": "npx mcp-jenkins --help"
+  },
+  "dependencies": {
+    "@grec0/mcp-jenkins": "^0.1.7",
+    "@playwright/mcp": "^0.0.31",
+    "@modelcontextprotocol/sdk": "^1.16.0"
+  },
+  "optionalDependencies": {
+    "@ocdevel/mcp-reddit": "latest",
+    "@context7/mcp-server": "latest",
+    "@notalk-tech/stackoverflow-mcp": "latest"
+  },
+  "devDependencies": {},
+  "keywords": ["mcp", "jenkins", "claude", "automation"],
+  "author": "MCP Workspace",
+  "license": "MIT"
+}
