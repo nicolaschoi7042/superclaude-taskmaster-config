@@ -1,0 +1,32 @@
+{
+  "components": {
+    "commands": {
+      "category": "commands",
+      "files_count": 17,
+      "installed_at": "2025-07-19T21:36:35.790684",
+      "version": "3.0.0"
+    },
+    "core": {
+      "category": "core",
+      "files_count": 9,
+      "installed_at": "2025-07-19T21:30:09.839007",
+      "version": "3.0.0"
+    }
+  },
+  "framework": {
+    "components": [
+      "core",
+      "commands"
+    ],
+    "description": "AI-enhanced development framework for Claude Code",
+    "installation_type": "global",
+    "name": "SuperClaude",
+    "version": "3.0.0"
+  },
+  "superclaude": {
+    "auto_update": false,
+    "enabled": true,
+    "profile": "default",
+    "version": "3.0.0"
+  }
+}
