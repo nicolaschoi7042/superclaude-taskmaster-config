@@ -37,6 +37,7 @@ nano ~/.claude.json  # Anthropic API 키 등 설정
 ### ✅ 기본 설치 (자동)
 - **Playwright** - 브라우저 자동화, E2E 테스트
 - **Task Master AI** - 작업 관리 및 오케스트레이션
+- **Filesystem** - 안전한 파일 시스템 접근 (@modelcontextprotocol/server-filesystem)
 
 ### 🔌 선택적 설치 (설정에서 활성화)
 - **Jenkins** - CI/CD 자동화, 빌드 관리 (개발 환경용)
@@ -58,6 +59,13 @@ nano ~/.claude.json  # Anthropic API 키 등 설정
 - 복잡한 작업의 다단계 분해
 - 진행 상황 추적 및 관리
 - 작업 우선순위 및 의존성 관리
+
+### 📁 Filesystem MCP
+안전한 파일 시스템 접근:
+- 워크스페이스 내 파일 읽기/쓰기
+- 디렉토리 구조 탐색 및 분석
+- 프로젝트 파일 관리 및 생성
+- 샌드박스 보안 (지정 디렉토리 내에서만 작업)
 
 ### 📚 선택적 MCP 서버들
 
@@ -250,6 +258,14 @@ Claude: Reddit MCP로 관련 서브레딧 분석
 # Context7 문서 검색
 사용자: "Next.js 최신 라우팅 패턴 알려줘"
 Claude: Context7 MCP로 공식 문서 패턴 검색
+
+# Filesystem 파일 관리
+사용자: "프로젝트의 package.json을 분석하고 최적화 제안해줘"
+Claude: Filesystem MCP로 파일 읽기 → 의존성 분석 및 개선 제안
+
+# 설정 파일 생성
+사용자: "TypeScript 프로젝트용 .gitignore 파일 생성해줘"
+Claude: Filesystem MCP로 .gitignore 파일 생성 및 내용 작성
 ```
 
 ## 🤝 기여하기

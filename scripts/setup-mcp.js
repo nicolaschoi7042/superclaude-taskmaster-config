@@ -39,6 +39,12 @@ function createMCPConfig() {
         command: "npx",
         args: ["@playwright/mcp"],
         env: {}
+      },
+      filesystem: {
+        command: "npx",
+        args: ["-y", "@modelcontextprotocol/server-filesystem", process.env.HOME + "/workspace"],
+        env: {},
+        comment: "Official MCP filesystem server for secure file operations within workspace"
       }
     }
   };
