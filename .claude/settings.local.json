@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "Bash(timeout:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(ls:*)",
+      "Bash(cp:*)",
+      "Bash(chmod:*)",
+      "Bash(grep:*)",
+      "Bash(jq:*)",
+      "Bash(git init:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(wget:*)",
+      "Bash(tar:*)",
+      "Bash(sudo mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(git-credential-manager:*)"
+    ],
+    "deny": []
+  }
+}
