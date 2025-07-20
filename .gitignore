@@ -33,6 +33,9 @@ logs/
 *.temp
 .cache/
 
+# Environment variables
+.env
+
 # Local environment files
 .env.local
 .env.*.local
