@@ -10,16 +10,22 @@
   },
   "dependencies": {
     "@grec0/mcp-jenkins": "^0.1.7",
-    "@playwright/mcp": "^0.0.31",
-    "@modelcontextprotocol/sdk": "^1.16.0"
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "@playwright/mcp": "^0.0.31"
   },
   "optionalDependencies": {
-    "@ocdevel/mcp-reddit": "latest",
     "@context7/mcp-server": "latest",
-    "@notalk-tech/stackoverflow-mcp": "latest"
+    "@coretext-ai/github-mcp-server": "^1.0.0",
+    "@notalk-tech/stackoverflow-mcp": "^1.2.5",
+    "@ocdevel/mcp-reddit": "latest",
+    "context7-mcp-server": "^1.0.1"
   },
-  "devDependencies": {},
-  "keywords": ["mcp", "jenkins", "claude", "automation"],
+  "keywords": [
+    "mcp",
+    "jenkins",
+    "claude",
+    "automation"
+  ],
   "author": "MCP Workspace",
   "license": "MIT"
 }
