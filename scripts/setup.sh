@@ -46,7 +46,7 @@ if [ -f "../config/package.json" ]; then
     cd ../config
     echo "의존성을 설치하고 MCP를 설정합니다..."
     npm install
-    
+
     # setup-mcp 스크립트가 있다면 실행
     if npm run setup-mcp 2>/dev/null; then
         echo "✅ MCP 설정 완료"
@@ -59,7 +59,7 @@ elif [ -f "../package.json" ]; then
     cd ..
     echo "의존성을 설치하고 MCP를 설정합니다..."
     npm install
-    
+
     if npm run setup-mcp 2>/dev/null; then
         echo "✅ MCP 설정 완료"
     else

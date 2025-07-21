@@ -9,18 +9,21 @@ Analyzes requests to understand intent, complexity, and requirements.
 ### Pre-Operation Validation Checks
 
 **Resource Validation**:
+
 - Token usage prediction based on operation complexity and scope
 - Memory and processing requirements estimation
 - File system permissions and available space verification
 - MCP server availability and response time checks
 
 **Compatibility Validation**:
+
 - Flag combination conflict detection (e.g., `--no-mcp` with `--seq`)
 - Persona + command compatibility verification
 - Tool availability for requested operations
 - Project structure requirements validation
 
 **Risk Assessment**:
+
 - Operation complexity scoring (0.0-1.0 scale)
 - Failure probability based on historical patterns
 - Resource exhaustion likelihood prediction
@@ -29,15 +32,17 @@ Analyzes requests to understand intent, complexity, and requirements.
 **Validation Logic**: Resource availability, flag compatibility, risk assessment, outcome prediction, and safety recommendations. Operations with risk scores >0.8 trigger safe mode suggestions.
 
 **Resource Management Thresholds**:
+
 - **Green Zone** (0-60%): Full operations, predictive monitoring active
 - **Yellow Zone** (60-75%): Resource optimization, caching, suggest --uc mode
-- **Orange Zone** (75-85%): Warning alerts, defer non-critical operations  
+- **Orange Zone** (75-85%): Warning alerts, defer non-critical operations
 - **Red Zone** (85-95%): Force efficiency modes, block resource-intensive operations
 - **Critical Zone** (95%+): Emergency protocols, essential operations only
 
 ### Pattern Recognition Rules
 
 #### Complexity Detection
+
 ```yaml
 simple:
   indicators:
@@ -68,6 +73,7 @@ complex:
 ```
 
 #### Domain Identification
+
 ```yaml
 frontend:
   keywords: [UI, component, React, Vue, CSS, responsive, accessibility, implement component, build UI]
@@ -108,6 +114,7 @@ wave_eligible:
 ```
 
 #### Operation Type Classification
+
 ```yaml
 analysis:
   verbs: [analyze, review, explain, understand, investigate, troubleshoot]
@@ -148,6 +155,7 @@ wave_operations:
 ```
 
 ### Intent Extraction Algorithm
+
 ```
 1. Parse user request for keywords and patterns
 2. Match against domain/operation matrices
@@ -159,6 +167,7 @@ wave_operations:
 ```
 
 **Enhanced Wave Detection Algorithm**:
+
 - **Flag Overrides**: `--single-wave` disables, `--force-waves`/`--wave-mode` enables
 - **Scoring Factors**: Complexity (0.2-0.4), scale (0.2-0.3), operations (0.2), domains (0.1), flag modifiers (0.05-0.1)
 - **Thresholds**: Default 0.7, customizable via `--wave-threshold`, enterprise strategy lowers file thresholds
@@ -169,15 +178,17 @@ wave_operations:
 Dynamic decision trees that map detected patterns to optimal tool combinations, persona activation, and orchestration strategies.
 
 ### Wave Orchestration Engine
+
 Multi-stage command execution with compound intelligence. Automatic complexity assessment or explicit flag control.
 
 **Wave Control Matrix**:
+
 ```yaml
 wave-activation:
   automatic: "complexity >= 0.7"
   explicit: "--wave-mode, --force-waves"
   override: "--single-wave, --wave-dry-run"
-  
+
 wave-strategies:
   progressive: "Incremental enhancement"
   systematic: "Methodical analysis"
@@ -185,6 +196,7 @@ wave-strategies:
 ```
 
 **Wave-Enabled Commands**:
+
 - **Tier 1**: `/analyze`, `/build`, `/implement`, `/improve`
 - **Tier 2**: `/design`, `/task`
 
@@ -215,19 +227,22 @@ wave-strategies:
 #### Tool Selection Logic
 
 **Base Tool Selection**:
+
 - **Search**: Grep (specific patterns) or Agent (open-ended)
-- **Understanding**: Sequential (complexity >0.7) or Read (simple)  
+- **Understanding**: Sequential (complexity >0.7) or Read (simple)
 - **Documentation**: Context7
 - **UI**: Magic
 - **Testing**: Playwright
 
 **Delegation & Wave Evaluation**:
+
 - **Delegation Score >0.6**: Add Task tool, auto-enable delegation flags based on scope
 - **Wave Score >0.7**: Add Sequential for coordination, auto-enable wave strategies based on requirements
 
 **Auto-Flag Assignment**:
+
 - Directory count >7 → `--delegate --parallel-dirs`
-- Focus areas >2 → `--multi-agent --parallel-focus`  
+- Focus areas >2 → `--multi-agent --parallel-focus`
 - High complexity + critical quality → `--wave-mode --wave-validation`
 - Multiple operation types → `--wave-mode --adaptive-waves`
 
@@ -236,12 +251,14 @@ wave-strategies:
 **Sub-Agent Delegation Decision Matrix**:
 
 **Delegation Scoring Factors**:
+
 - **Complexity >0.6**: +0.3 score
 - **Parallelizable Operations**: +0.4 (scaled by opportunities/5, max 1.0)
-- **High Token Requirements >15K**: +0.2 score  
+- **High Token Requirements >15K**: +0.2 score
 - **Multi-domain Operations >2**: +0.1 per domain
 
 **Wave Opportunity Scoring**:
+
 - **High Complexity >0.8**: +0.4 score
 - **Multiple Operation Types >2**: +0.3 score
 - **Critical Quality Requirements**: +0.2 score
@@ -250,13 +267,15 @@ wave-strategies:
 - **Enterprise Scale**: +0.15 score
 
 **Strategy Recommendations**:
+
 - **Wave Score >0.7**: Use wave strategies
 - **Directories >7**: `parallel_dirs`
-- **Focus Areas >2**: `parallel_focus`  
+- **Focus Areas >2**: `parallel_focus`
 - **High Complexity**: `adaptive_delegation`
 - **Default**: `single_agent`
 
 **Wave Strategy Selection**:
+
 - **Security Focus**: `wave_validation`
 - **Performance Focus**: `progressive_waves`
 - **Critical Operations**: `wave_validation`
@@ -265,6 +284,7 @@ wave-strategies:
 - **Default**: `systematic_waves`
 
 **Auto-Delegation Triggers**:
+
 ```yaml
 directory_threshold:
   condition: directory_count > 7
@@ -293,6 +313,7 @@ token_optimization:
 ```
 
 **Wave Auto-Delegation Triggers**:
+
 - Complex improvement: complexity > 0.8 AND files > 20 AND operation_types > 2 → --wave-count 5 (95%)
 - Multi-domain analysis: domains > 3 AND tokens > 15K → --adaptive-waves (90%)
 - Critical operations: production_deploy OR security_audit → --wave-validation (95%)
@@ -310,6 +331,7 @@ token_optimization:
 | Large-scale refactoring | high | --wave-mode --systematic-waves | 75% |
 
 **Sub-Agent Specialization Matrix**:
+
 - **Quality**: qa persona, complexity/maintainability focus, Read/Grep/Sequential tools
 - **Security**: security persona, vulnerabilities/compliance focus, Grep/Sequential/Context7 tools
 - **Performance**: performance persona, bottlenecks/optimization focus, Read/Sequential/Playwright tools
@@ -317,6 +339,7 @@ token_optimization:
 - **API**: backend persona, endpoints/contracts focus, Grep/Context7/Sequential tools
 
 **Wave-Specific Specialization Matrix**:
+
 - **Review**: analyzer persona, current_state/quality_assessment focus, Read/Grep/Sequential tools
 - **Planning**: architect persona, strategy/design focus, Sequential/Context7/Write tools
 - **Implementation**: intelligent persona, code_modification/feature_creation focus, Edit/MultiEdit/Task tools
@@ -326,6 +349,7 @@ token_optimization:
 #### Persona Auto-Activation System
 
 **Multi-Factor Activation Scoring**:
+
 - **Keyword Matching**: Base score from domain-specific terms (30%)
 - **Context Analysis**: Project phase, urgency, complexity assessment (40%)
 - **User History**: Past preferences and successful outcomes (20%)
@@ -334,28 +358,34 @@ token_optimization:
 **Intelligent Activation Rules**:
 
 **Performance Issues** → `--persona-performance` + `--focus performance`
+
 - **Trigger Conditions**: Response time >500ms, error rate >1%, high resource usage
 - **Confidence Threshold**: 85% for automatic activation
 
 **Security Concerns** → `--persona-security` + `--focus security`
+
 - **Trigger Conditions**: Vulnerability detection, auth failures, compliance gaps
 - **Confidence Threshold**: 90% for automatic activation
 
 **UI/UX Tasks** → `--persona-frontend` + `--magic`
+
 - **Trigger Conditions**: Component creation, responsive design, accessibility
 - **Confidence Threshold**: 80% for automatic activation
 
 **Complex Debugging** → `--persona-analyzer` + `--think` + `--seq`
+
 - **Trigger Conditions**: Multi-component failures, root cause investigation
 - **Confidence Threshold**: 75% for automatic activation
 
 **Documentation Tasks** → `--persona-scribe=en`
+
 - **Trigger Conditions**: README, wiki, guides, commit messages, API docs
 - **Confidence Threshold**: 70% for automatic activation
 
 #### Flag Auto-Activation Patterns
 
 **Context-Based Auto-Activation**:
+
 - Performance issues → --persona-performance + --focus performance + --think
 - Security concerns → --persona-security + --focus security + --validate
 - UI/UX tasks → --persona-frontend + --magic + --c7
@@ -367,6 +397,7 @@ token_optimization:
 - Iterative improvement → --loop for polish, refine, enhance keywords
 
 **Wave Auto-Activation**:
+
 - Complex multi-domain → --wave-mode auto when complexity >0.8 AND files >20 AND types >2
 - Enterprise scale → --wave-strategy enterprise when files >100 AND complexity >0.7 AND domains >2
 - Critical operations → Wave validation enabled by default for production deployments
@@ -375,17 +406,20 @@ token_optimization:
 - Large refactoring → --wave-strategy systematic --wave-delegation folders
 
 **Sub-Agent Auto-Activation**:
+
 - File analysis → --delegate files when >50 files detected
 - Directory analysis → --delegate folders when >7 directories detected
 - Mixed scope → --delegate auto for complex project structures
 - High concurrency → --concurrency auto-adjusted based on system resources
 
 **Loop Auto-Activation**:
+
 - Quality improvement → --loop for polish, refine, enhance, improve keywords
 - Iterative requests → --loop when "iteratively", "step by step", "incrementally" detected
 - Refinement operations → --loop for cleanup, fix, correct operations on existing code
 
 #### Flag Precedence Rules
+
 1. Safety flags (--safe-mode) > optimization flags
 2. Explicit flags > auto-activation
 3. Thinking depth: --ultrathink > --think-hard > --think
@@ -398,11 +432,13 @@ token_optimization:
 10. --uc auto-activation overrides verbose flags
 
 ### Confidence Scoring
+
 Based on pattern match strength (40%), historical success rate (30%), context completeness (20%), resource availability (10%).
 
 ## Quality Gates & Validation Framework
 
 ### 8-Step Validation Cycle with AI Integration
+
 ```yaml
 quality_gates:
   step_1_syntax: "language parsers, Context7 validation, intelligent suggestions"
@@ -425,6 +461,7 @@ wave_integration:
 ```
 
 ### Task Completion Criteria
+
 ```yaml
 completion_requirements:
   validation: "all 8 steps pass, evidence provided, metrics documented"
@@ -445,6 +482,7 @@ Resource management, operation batching, and intelligent optimization for sub-10
 **Token Management**: Intelligent resource allocation based on unified Resource Management Thresholds (see Detection Engine section)
 
 **Operation Batching**:
+
 - **Tool Coordination**: Parallel operations when no dependencies
 - **Context Sharing**: Reuse analysis results across related routing decisions
 - **Cache Strategy**: Store successful routing patterns for session reuse
@@ -452,30 +490,34 @@ Resource management, operation batching, and intelligent optimization for sub-10
 - **Resource Distribution**: Dynamic token allocation across sub-agents
 
 **Resource Allocation**:
+
 - **Detection Engine**: 1-2K tokens for pattern analysis
 - **Decision Trees**: 500-1K tokens for routing logic
 - **MCP Coordination**: Variable based on servers activated
-
 
 ## 🔗 Integration Intelligence
 
 Smart MCP server selection and orchestration.
 
 ### MCP Server Selection Matrix
+
 **Reference**: See MCP.md for detailed server capabilities, workflows, and integration patterns.
 
 **Quick Selection Guide**:
+
 - **Context7**: Library docs, framework patterns
 - **Sequential**: Complex analysis, multi-step reasoning
 - **Magic**: UI components, design systems
 - **Playwright**: E2E testing, performance metrics
 
 ### Intelligent Server Coordination
+
 **Reference**: See MCP.md for complete server orchestration patterns and fallback strategies.
 
 **Core Coordination Logic**: Multi-server operations, fallback chains, resource optimization
 
 ### Persona Integration
+
 **Reference**: See PERSONAS.md for detailed persona specifications and MCP server preferences.
 
 ## 🚨 Emergency Protocols
@@ -483,25 +525,26 @@ Smart MCP server selection and orchestration.
 Handling resource constraints and failures gracefully.
 
 ### Resource Management
+
 Threshold-based resource management follows the unified Resource Management Thresholds (see Detection Engine section above).
 
 ### Graceful Degradation
+
 - **Level 1**: Reduce verbosity, skip optional enhancements, use cached results
 - **Level 2**: Disable advanced features, simplify operations, batch aggressively
 - **Level 3**: Essential operations only, maximum compression, queue non-critical
 
 ### Error Recovery Patterns
+
 - **MCP Timeout**: Use fallback server
 - **Token Limit**: Activate compression
 - **Tool Failure**: Try alternative tool
 - **Parse Error**: Request clarification
 
-
-
-
 ## 🔧 Configuration
 
 ### Orchestrator Settings
+
 ```yaml
 orchestrator_config:
   # Performance
@@ -509,17 +552,17 @@ orchestrator_config:
   cache_ttl: 3600
   parallel_operations: true
   max_parallel: 3
-  
+
   # Intelligence
   learning_enabled: true
   confidence_threshold: 0.7
   pattern_detection: aggressive
-  
+
   # Resource Management
   token_reserve: 10%
   emergency_threshold: 90%
   compression_threshold: 75%
-  
+
   # Wave Mode Settings
   wave_mode:
     enable_auto_detection: true
@@ -530,4 +573,5 @@ orchestrator_config:
 ```
 
 ### Custom Routing Rules
+
 Users can add custom routing patterns via YAML configuration files.

@@ -14,12 +14,14 @@ mcp-servers/
 ## 🔧 현재 설정된 MCP 서버
 
 ### ✅ 활성화된 서버
+
 - **filesystem** (`@modelcontextprotocol/server-filesystem`)
   - 워크스페이스 내 파일 시스템 접근
   - 경로: `/home/roboe/workspace`
   - 보안: 디렉토리 기반 샌드박싱
 
 ### 🔌 선택적 서버들 (설정에서 활성화 가능)
+
 - **jenkins** - CI/CD 자동화
 - **reddit** - Reddit 콘텐츠 검색
 - **context7** - 라이브러리 문서 검색
@@ -29,12 +31,14 @@ mcp-servers/
 ## 📊 Filesystem MCP 서버 기능
 
 ### 🔍 파일 작업
+
 - **파일 읽기**: 텍스트 파일, 설정 파일, 소스 코드 읽기
 - **파일 쓰기**: 새 파일 생성, 기존 파일 수정
 - **디렉토리 탐색**: 프로젝트 구조 분석, 파일 목록 조회
 - **메타데이터**: 파일 크기, 수정 시간, 권한 정보
 
 ### 🛡️ 보안 기능
+
 - **샌드박싱**: 지정된 디렉토리(`/home/roboe/workspace`) 내에서만 작업
 - **접근 제어**: 상위 디렉토리 접근 차단
 - **안전한 경로**: 경로 순회 공격 방지
@@ -58,6 +62,7 @@ Claude: filesystem MCP로 디렉토리 탐색 → 구조 분석 및 리팩토링
 ## 🔧 새 MCP 서버 추가 방법
 
 1. **서버 정보 파일 생성**
+
    ```bash
    # 새 서버 설정 파일 생성
    cp filesystem.json new-server.json
@@ -65,6 +70,7 @@ Claude: filesystem MCP로 디렉토리 탐색 → 구조 분석 및 리팩토링
    ```
 
 2. **Claude Desktop 설정 업데이트**
+
    ```json
    // ~/.config/claude-desktop/claude_desktop_config.json
    {
@@ -79,10 +85,11 @@ Claude: filesystem MCP로 디렉토리 탐색 → 구조 분석 및 리팩토링
    ```
 
 3. **테스트 및 검증**
+
    ```bash
    # 패키지 테스트
    npx -y package-name
-   
+
    # Claude Desktop 재시작
    # 기능 확인
    ```
@@ -90,11 +97,13 @@ Claude: filesystem MCP로 디렉토리 탐색 → 구조 분석 및 리팩토링
 ## 📋 MCP 서버 관리
 
 ### 활성화/비활성화
+
 - **활성화**: Claude Desktop 설정에서 `disabled: true` 제거
 - **비활성화**: `disabled: true` 추가
 - **재시작**: Claude Desktop 재시작 필요
 
 ### 문제 해결
+
 ```bash
 # 패키지 설치 확인
 npx -y @modelcontextprotocol/server-filesystem /tmp
@@ -107,5 +116,5 @@ cat ~/.config/claude-desktop/claude_desktop_config.json | jq
 
 ---
 
-**업데이트**: 2025-07-21  
+**업데이트**: 2025-07-21
 **관리자**: SuperClaude Framework Team

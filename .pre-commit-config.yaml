@@ -1,0 +1,51 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim Trailing Whitespace
+        description: This hook trims trailing whitespace.
+        types: [text]
+      - id: end-of-file-fixer
+        name: Fix End of Files
+        description: Ensures that a file is either empty, or ends with one newline.
+        types: [text]
+      - id: mixed-line-ending
+        name: Mixed line ending
+        description: Checks for mixed line ending.
+        args: ["--fix=lf"]
+      - id: check-yaml
+        name: Check Yaml
+        description: This hook checks yaml files for parseable syntax.
+      - id: check-json
+        name: Check JSON
+        description: This hook checks json files for parseable syntax.
+      - id: check-added-large-files
+        name: Check for added large files
+        description: Prevent giant files from being committed.
+        args: ["--maxkb=1000"]
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+        description: Check for files that contain merge conflict strings.
+      - id: check-case-conflict
+        name: Check for case conflicts
+        description: Check for files that would conflict in case-insensitive filesystems.
+      - id: detect-private-key
+        name: Detect Private Key
+        description: Detects presence of private keys.
+
+  # YAML 포맷팅
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        types_or: [yaml]
+        additional_dependencies: ["prettier@3.1.0"]
+
+  # Markdown 포맷팅
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        args: ["--fix"]
+        files: \.md$

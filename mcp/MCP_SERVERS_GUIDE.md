@@ -7,6 +7,7 @@
 ### 1. GitHub MCP 서버 (@andrebuzeli/github-mcp-v2)
 
 **기능:**
+
 - GitHub 리포지토리 관리
 - 이슈 및 PR 관리
 - 릴리스 관리
@@ -15,6 +16,7 @@
 - 분석 도구
 
 **설정:**
+
 ```json
 {
   "github": {
@@ -29,6 +31,7 @@
 ```
 
 **환경 변수 설정:**
+
 - `GITHUB_TOKEN`: GitHub Personal Access Token 필요
   1. GitHub → Settings → Developer settings → Personal access tokens
   2. "Generate new token (classic)" 클릭
@@ -38,11 +41,13 @@
 ### 2. Stack Overflow MCP 서버 (@notalk-tech/stackoverflow-mcp)
 
 **기능:**
+
 - Stack Overflow 질문 검색
 - 프로그래밍 Q&A 조회
 - 기술적 문제 해결 지원
 
 **설정:**
+
 ```json
 {
   "stackoverflow": {
@@ -55,6 +60,7 @@
 ```
 
 **사용법:**
+
 - API 키가 필요하지 않음
 - Stack Overflow의 공개 API 사용
 - 질문 검색, 답변 조회 가능
@@ -62,12 +68,14 @@
 ### 3. Reddit MCP 서버 (reddit-mcp-server)
 
 **기능:**
+
 - Reddit 콘텐츠 가져오기
 - 서브레딧 탐색
 - 게시물 및 댓글 조회
 - Reddit API 통합
 
 **설정:**
+
 ```json
 {
   "reddit": {
@@ -86,6 +94,7 @@
 
 **환경 변수 설정:**
 Reddit API 앱 생성 필요:
+
 1. https://www.reddit.com/prefs/apps 접속
 2. "Create App" 클릭
 3. 앱 유형을 "script" 선택
@@ -95,19 +104,23 @@ Reddit API 앱 생성 필요:
 ## 기존 설치된 MCP 서버
 
 ### Context7 (@upstash/context7-mcp)
+
 - 라이브러리 문서 조회
 - 프레임워크 패턴 검색
 
 ### Playwright (@playwright/mcp)
+
 - 브라우저 자동화
 - E2E 테스트
 - 웹 스크래핑
 
 ### Memory Keeper (@modelcontextprotocol/server-memory)
+
 - 지식 그래프 관리
 - 메모리 저장 및 검색
 
 ### Task Master AI (task-master-ai)
+
 - 프로젝트 관리
 - 작업 자동화
 - AI 기반 태스크 관리
@@ -121,9 +134,11 @@ Reddit API 앱 생성 필요:
 ## 환경 변수 설정 방법
 
 ### 방법 1: .claude.json에서 직접 설정
+
 위의 설정 예시처럼 각 서버의 `env` 객체에 환경 변수 추가
 
 ### 방법 2: 시스템 환경 변수 사용
+
 ```bash
 export GITHUB_TOKEN="your_token_here"
 export REDDIT_CLIENT_ID="your_client_id"

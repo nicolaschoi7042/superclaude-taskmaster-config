@@ -49,7 +49,10 @@
       "Bash(export JENKINS_URL=\"https://jenkins.roboetech.com\")",
       "Bash(export JENKINS_USERNAME=\"jenkins\")",
       "Bash(export JENKINS_PASSWORD=\"adminjenkins\")",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(pip install:*)",
+      "Bash(pipx install:*)",
+      "Bash(pre-commit:*)"
     ],
     "deny": []
   }
