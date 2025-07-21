@@ -1,0 +1,262 @@
+name: Test Setup Script
+
+on:
+  push:
+    paths:
+      - "scripts/setup.sh"
+      - ".github/workflows/test-setup-script.yml"
+  pull_request:
+    paths:
+      - "scripts/setup.sh"
+      - ".github/workflows/test-setup-script.yml"
+  workflow_dispatch:
+
+jobs:
+  test-setup-linux:
+    name: Test on Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Claude CLI (mock)
+        run: |
+          # Claude CLI를 모킹하여 테스트
+          mkdir -p ~/bin
+          cat > ~/bin/claude << 'EOF'
+          #!/bin/bash
+          if [ "$1" = "--version" ]; then
+            echo "Claude Code v1.0.0"
+          elif [ "$1" = "mcp" ] && [ "$2" = "list" ]; then
+            echo "MCP Servers:"
+            echo "- filesystem"
+            echo "- jenkins"
+            echo "- sequential"
+          fi
+          EOF
+          chmod +x ~/bin/claude
+          echo "$HOME/bin" >> $GITHUB_PATH
+
+      - name: Create test environment
+        run: |
+          # 필요한 디렉토리 생성
+          mkdir -p config mcp
+
+          # 테스트용 파일들 생성
+          echo '{}' > .claude.json
+          echo '{}' > config/settings.json
+          echo '{}' > .superclaude-metadata.json
+          echo '# CLAUDE.md' > CLAUDE.md
+          echo '# TEST.md' > config/TEST.md
+          echo '# MCP.md' > mcp/MCP.md
+
+          # package.json 생성 (MCP 설정 테스트용)
+          cat > package.json << 'EOF'
+          {
+            "name": "superclaude-test",
+            "version": "1.0.0",
+            "scripts": {
+              "setup-mcp": "echo 'MCP setup completed'"
+            }
+          }
+          EOF
+
+      - name: Run setup script
+        run: |
+          cd scripts
+          bash setup.sh
+
+      - name: Verify installation
+        run: |
+          # 설치된 파일들 확인
+          echo "=== Checking installed files ==="
+
+          # .claude 디렉토리 확인
+          if [ -d ~/.claude ]; then
+            echo "✅ ~/.claude directory exists"
+          else
+            echo "❌ ~/.claude directory not found"
+            exit 1
+          fi
+
+          # 복사된 파일들 확인
+          files_to_check=(
+            "~/.claude.json"
+            "~/.claude/settings.json"
+            "~/.claude/.superclaude-metadata.json"
+            "~/.claude/CLAUDE.md"
+            "~/.claude/TEST.md"
+            "~/.claude/MCP.md"
+          )
+
+          for file in "${files_to_check[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ $file not found"
+              exit 1
+            fi
+          done
+
+          # 권한 확인
+          if [ "$(stat -c %a ~/.claude.json)" = "600" ]; then
+            echo "✅ ~/.claude.json has correct permissions (600)"
+          else
+            echo "❌ ~/.claude.json has incorrect permissions"
+            exit 1
+          fi
+
+  test-setup-macos:
+    name: Test on macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install Claude CLI (mock)
+        run: |
+          # Claude CLI를 모킹하여 테스트
+          mkdir -p ~/bin
+          cat > ~/bin/claude << 'EOF'
+          #!/bin/bash
+          if [ "$1" = "--version" ]; then
+            echo "Claude Code v1.0.0"
+          elif [ "$1" = "mcp" ] && [ "$2" = "list" ]; then
+            echo "MCP Servers:"
+            echo "- filesystem"
+            echo "- jenkins"
+            echo "- sequential"
+          fi
+          EOF
+          chmod +x ~/bin/claude
+          echo "$HOME/bin" >> $GITHUB_PATH
+
+      - name: Create test environment
+        run: |
+          # 필요한 디렉토리 생성
+          mkdir -p config mcp
+
+          # 테스트용 파일들 생성
+          echo '{}' > .claude.json
+          echo '{}' > config/settings.json
+          echo '{}' > .superclaude-metadata.json
+          echo '# CLAUDE.md' > CLAUDE.md
+          echo '# TEST.md' > config/TEST.md
+          echo '# MCP.md' > mcp/MCP.md
+
+          # package.json 생성
+          cat > package.json << 'EOF'
+          {
+            "name": "superclaude-test",
+            "version": "1.0.0",
+            "scripts": {
+              "setup-mcp": "echo 'MCP setup completed'"
+            }
+          }
+          EOF
+
+      - name: Run setup script
+        run: |
+          cd scripts
+          bash setup.sh
+
+      - name: Verify installation
+        run: |
+          # 설치된 파일들 확인
+          echo "=== Checking installed files ==="
+
+          # .claude 디렉토리 확인
+          if [ -d ~/.claude ]; then
+            echo "✅ ~/.claude directory exists"
+          else
+            echo "❌ ~/.claude directory not found"
+            exit 1
+          fi
+
+          # 복사된 파일들 확인
+          files_to_check=(
+            "$HOME/.claude.json"
+            "$HOME/.claude/settings.json"
+            "$HOME/.claude/.superclaude-metadata.json"
+            "$HOME/.claude/CLAUDE.md"
+            "$HOME/.claude/TEST.md"
+            "$HOME/.claude/MCP.md"
+          )
+
+          for file in "${files_to_check[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file exists"
+            else
+              echo "❌ $file not found"
+              exit 1
+            fi
+          done
+
+          # macOS에서는 stat 명령어가 다름
+          perms=$(stat -f %Lp ~/.claude.json)
+          if [ "$perms" = "600" ]; then
+            echo "✅ ~/.claude.json has correct permissions (600)"
+          else
+            echo "❌ ~/.claude.json has incorrect permissions ($perms)"
+            exit 1
+          fi
+
+  test-error-handling:
+    name: Test Error Handling
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test without Node.js
+        run: |
+          cd scripts
+          # Node.js가 없는 상황 시뮬레이션
+          PATH="/usr/bin:/bin" bash setup.sh || exit_code=$?
+          if [ "$exit_code" = "1" ]; then
+            echo "✅ Script correctly exits when Node.js is not found"
+          else
+            echo "❌ Script should exit with code 1 when Node.js is not found"
+            exit 1
+          fi
+
+      - name: Setup Node.js 16 (too old)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16"
+
+      - name: Test with old Node.js version
+        run: |
+          cd scripts
+          bash setup.sh || exit_code=$?
+          if [ "$exit_code" = "1" ]; then
+            echo "✅ Script correctly exits when Node.js version is too old"
+          else
+            echo "❌ Script should exit with code 1 when Node.js version is too old"
+            exit 1
+          fi
+
+      - name: Test without Claude CLI
+        run: |
+          cd scripts
+          # Claude가 없는 상황에서 테스트
+          bash setup.sh || exit_code=$?
+          if [ "$exit_code" = "1" ]; then
+            echo "✅ Script correctly exits when Claude CLI is not found"
+          else
+            echo "❌ Script should exit with code 1 when Claude CLI is not found"
+            exit 1
+          fi

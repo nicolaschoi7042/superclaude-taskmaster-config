@@ -6,7 +6,7 @@
 
 ## ✨ 주요 특징
 
-- 🎯 **One-Command Setup**: `./scripts/quick-setup.sh` 하나로 모든 설정 완료
+- 🎯 **One-Command Setup**: `./setup.sh` 하나로 모든 설정 완료
 - 🔄 **Portable**: Git clone 후 즉시 사용 가능
 - 🛡️ **Secure**: 환경 변수로 민감 정보 관리
 - 🌍 **Cross-Platform**: Windows, macOS, Linux 모두 지원
@@ -15,10 +15,12 @@
 ## 🔧 설치된 MCP 서버
 
 ### ✅ 기본 설치 (자동)
+
 - **Jenkins** - CI/CD 자동화, 빌드 관리 (11개 도구)
 - **Playwright** - 브라우저 자동화, E2E 테스트
 
 ### 🔌 선택적 설치 (설정에서 활성화)
+
 - **Reddit** - Reddit API 통합
 - **Context7** - 문서화 도구
 - **StackOverflow** - 질의응답 검색
@@ -51,7 +53,7 @@ git clone [이 저장소 URL]
 cd mcp
 
 # 2. 자동 설정 실행
-./scripts/quick-setup.sh
+./setup.sh
 
 # 3. Jenkins 설정 (선택사항)
 nano .env  # Jenkins URL과 자격 증명 입력
@@ -63,10 +65,11 @@ nano .env  # Jenkins URL과 자격 증명 입력
 ### 수동 설치
 
 1. **전제 조건 확인**
-   - Node.js v18+ 
+   - Node.js v18+
    - Claude Code 최신 버전
 
 2. **설정 파일 복사**
+
    ```bash
    # Linux/macOS/WSL
    cp .claude.json ~/.claude.json
@@ -76,9 +79,11 @@ nano .env  # Jenkins URL과 자격 증명 입력
    ```
 
 3. **API 키 설정**
+
    ```bash
    nano ~/.claude.json
    ```
+
    다음 키들을 실제 값으로 변경:
    - `ANTHROPIC_API_KEY` (권장)
    - `OPENAI_API_KEY`
@@ -153,14 +158,16 @@ claude mcp list
 ```
 
 Claude Code 세션에서 SuperClaude 명령어들 테스트:
+
 - `/analyze` ✅
-- `/build` ✅  
+- `/build` ✅
 - `/implement` ✅
 - `/improve` ✅
 
 ## 🛠️ 문제 해결
 
 ### MCP 서버 로드 실패
+
 ```bash
 # 디버그 모드로 실행
 claude --debug
@@ -168,10 +175,12 @@ claude --debug
 ```
 
 ### API 키 오류
+
 - `.claude.json`에서 API 키가 올바르게 설정되었는지 확인
 - 최소 1개의 AI 서비스 API 키 필요 (Anthropic 권장)
 
 ### Windows 경로 문제
+
 - JSON에서 경로 구분자는 `\\\\` (이중 이스케이프) 사용
 
 ## 📚 추가 자료
@@ -183,6 +192,7 @@ claude --debug
 ## 🤝 기여하기
 
 이 설정 패키지 개선에 기여하고 싶으시다면:
+
 1. Fork 하기
 2. Feature 브랜치 생성
 3. 변경사항 커밋

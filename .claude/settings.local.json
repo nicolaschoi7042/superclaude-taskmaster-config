@@ -1,6 +1,15 @@
 {
   "permissions": {
     "allow": [
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "mcp__jenkins__jenkins_get_job_status",
+      "Bash(source:*)",
+      "mcp__jenkins__jenkins_get_git_branches",
+      "Bash(npm install:*)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
       "Bash(claude mcp add:*)",
       "Bash(claude mcp:*)",
       "Bash(timeout:*)",
@@ -22,7 +31,28 @@
       "Bash(git commit:*)",
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(./setup.sh:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)",
+      "Bash(true)",
+      "Bash(systemctl status:*)",
+      "Bash(claude doctor)",
+      "Bash(claude mcp:*)",
+      "Bash(export JENKINS_URL=https://jenkins.roboetech.com)",
+      "Bash(export JENKINS_USERNAME=jenkins)",
+      "Bash(export JENKINS_PASSWORD=adminjenkins)",
+      "Bash(echo:*)",
+      "Bash(export JENKINS_URL=\"https://jenkins.roboetech.com\")",
+      "Bash(export JENKINS_USERNAME=\"jenkins\")",
+      "Bash(export JENKINS_PASSWORD=\"adminjenkins\")",
+      "Bash(git commit:*)",
+      "Bash(pip install:*)",
+      "Bash(pipx install:*)",
+      "Bash(pre-commit:*)"
     ],
     "deny": []
   }

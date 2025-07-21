@@ -11,7 +11,7 @@ console.log('🚀 MCP Workspace 설정을 시작합니다...\n');
 function getClaudeConfigPath() {
   const platform = os.platform();
   const home = os.homedir();
-  
+
   switch (platform) {
     case 'darwin': // macOS
       return path.join(home, 'Library', 'Application Support', 'Claude', 'claude_desktop_config.json');
@@ -39,6 +39,12 @@ function createMCPConfig() {
         command: "npx",
         args: ["@playwright/mcp"],
         env: {}
+      },
+      filesystem: {
+        command: "npx",
+        args: ["-y", "@modelcontextprotocol/server-filesystem", process.env.HOME + "/workspace"],
+        env: {},
+        comment: "Official MCP filesystem server for secure file operations within workspace"
       }
     }
   };
@@ -85,23 +91,23 @@ function setupMCP() {
     // 1. MCP 패키지 설치
     console.log('📦 MCP 패키지들을 설치합니다...');
     execSync('npm install', { stdio: 'inherit' });
-    
+
     // 2. Claude Desktop 설정 파일 생성
     console.log('⚙️ Claude Desktop 설정을 생성합니다...');
     const configPath = getClaudeConfigPath();
     const configDir = path.dirname(configPath);
-    
+
     // 설정 디렉토리 생성
     if (!fs.existsSync(configDir)) {
       fs.mkdirSync(configDir, { recursive: true });
       console.log(`✅ 설정 디렉토리 생성: ${configDir}`);
     }
-    
+
     // 설정 파일 생성
     const config = createMCPConfig();
     fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
     console.log(`✅ 설정 파일 생성: ${configPath}`);
-    
+
     // 3. 환경 변수 템플릿 생성
     console.log('📝 환경 변수 템플릿을 생성합니다...');
     const envTemplate = `# Jenkins 설정
@@ -115,22 +121,22 @@ REDDIT_CLIENT_SECRET=your-client-secret
 REDDIT_USERNAME=your-username
 REDDIT_PASSWORD=your-password
 `;
-    
+
     fs.writeFileSync('.env.template', envTemplate);
     console.log('✅ .env.template 파일 생성');
-    
+
     // 4. .env 파일 체크
     if (!fs.existsSync('.env')) {
       fs.copyFileSync('.env.template', '.env');
       console.log('✅ .env 파일 생성 (템플릿에서 복사)');
     }
-    
+
     console.log('\n🎉 MCP Workspace 설정이 완료되었습니다!');
     console.log('\n📋 다음 단계:');
     console.log('1. .env 파일을 편집하여 Jenkins 및 기타 서비스 정보를 입력하세요');
     console.log('2. Claude Desktop을 재시작하세요');
     console.log('3. Jenkins MCP 서버를 테스트하세요: npm run test-jenkins');
-    
+
   } catch (error) {
     console.error('❌ 설정 중 오류가 발생했습니다:', error.message);
     process.exit(1);

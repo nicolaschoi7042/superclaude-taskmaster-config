@@ -1,0 +1,37 @@
+{
+  "name": "filesystem",
+  "package": "@modelcontextprotocol/server-filesystem",
+  "description": "Official MCP server for filesystem access",
+  "version": "2025.7.1",
+  "features": [
+    "File read/write operations",
+    "Directory listing and traversal",
+    "File metadata access",
+    "Cross-platform filesystem operations",
+    "Secure file access controls"
+  ],
+  "configuration": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+    "env": {}
+  },
+  "security": {
+    "access_control": "Directory-based sandboxing",
+    "allowed_paths": "Configurable root directory",
+    "notes": "Only allows access within specified directory tree"
+  },
+  "usage_examples": [
+    {
+      "scenario": "Read project files",
+      "description": "Access and analyze project source code files"
+    },
+    {
+      "scenario": "Write configuration files",
+      "description": "Generate or update project configuration files"
+    },
+    {
+      "scenario": "Directory exploration",
+      "description": "Navigate and understand project structure"
+    }
+  ]
+}
