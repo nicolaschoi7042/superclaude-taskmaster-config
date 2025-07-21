@@ -34,7 +34,7 @@ logs/
 .cache/
 
 # Environment variables
-.env
+# .env
 
 # Local environment files
 .env.local

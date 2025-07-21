@@ -11,7 +11,8 @@
   "dependencies": {
     "@grec0/mcp-jenkins": "^0.1.7",
     "@modelcontextprotocol/sdk": "^1.16.0",
-    "@playwright/mcp": "^0.0.31"
+    "@playwright/mcp": "^0.0.31",
+    "dotenv": "^17.2.0"
   },
   "optionalDependencies": {
     "@context7/mcp-server": "latest",
